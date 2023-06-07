@@ -6,6 +6,11 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+button{
+    border-radius: 0;
+    border: 1px solid black;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -14,13 +19,19 @@ body{
 }
 
 .output{
-    width: 330px;
+    width: 336px;
     text-align: right;
-    border: 0px;
+    border: 2px solid black;
+    border-bottom: 0;
 }
 
 .button-container{
     display: grid;
     grid-template-columns: repeat(4, 85px);
     grid-template-rows: repeat(5, 85px);
+    border: 2px solid black;
+}
+
+.long-button{
+    grid-column: span 2;
 }
