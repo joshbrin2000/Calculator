@@ -1,4 +1,26 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+body{
+    margin: 125px;
+    padding: 125px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output{
+    width: 330px;
+    text-align: right;
+    border: 0px;
+}
+
 .button-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: repeat(5, 85px);
 }
