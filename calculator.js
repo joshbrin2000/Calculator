@@ -2,43 +2,55 @@ let input = 0;
 let numberList = [];
 let operandList = [];
 pointToggle = true;
+let answerToggle = false;
 
 function add(a, b){
     let sum = a + b;
+    //console.log(`Sum: ${sum}`);
     return sum;
 }
 
 function subtract(a, b){
     let result = a - b;
+    //console.log(`Substract: ${result}`);
     return result;
 }
 
 function multiply(a, b){
     let product = a * b;
+    //console.log(`Multiply: ${product}`);
     return product;
 }
 
 function divide(a, b){
     if (b === 0){
-        console.log("Don't divide by zero, jerkass");
+        //console.log("Don't divide by zero, jerkass");
         return null;
     }
     else{
         let quotient = a / b;
+        //console.log(`Divide: ${quotient}`);
         return quotient;
     }
 }
 
 function modulo(a, b){
     let remainder = a % b;
+    //console.log(`Modulo: ${remainder}`);
     return remainder;
 }
 
 function operate(){
+    //console.log(numberList);
+    //console.log(operandList);
+    //console.log('in here')
     let a = numberList.shift();
+    //console.log(`a: ${a}`);
     while (operandList.length > 0){
         let b = numberList.shift();
+        //console.log(`b: ${b}`);
         let op = operandList.shift();
+        //console.log(`op: ${op}`);
         switch(op){
             case '+':
                 a = add(a, b);
@@ -63,7 +75,8 @@ function operate(){
                 break;
         }
     }
-    document.getElementById('output').value = a;
+    //console.log(a)
+    return a;
 }
 
 function idCheck(id, value){
@@ -71,14 +84,16 @@ function idCheck(id, value){
     //console.log(value);
     switch(id){
         case 'number':
-            if (input === 0){
+            if (input <= 0 || answerToggle){
                 input = +value;
-                //console.log(input);
             }
             else{
                 input += value;
                 input = Number(input);
                 //console.log(input);
+            }
+            if (answerToggle){
+                answerToggle = !answerToggle;
             }
             break;
             
@@ -113,37 +128,39 @@ function idCheck(id, value){
             break;  
 
         case 'modulo':
-            numberList.append('%');
-            numberList.append(input);
+            operandList.push('%');
+            numberList.push(input);
             input = 0;
             break;
         
         case 'plus':
-            numberList.append('+');
-            numberList.append(input);
+            operandList.push('+');
+            numberList.push(input);
             input = 0;
             break;
 
         case 'minus':
-            numberList.append('-');
-            numberList.append(input);
+            operandList.push('-');
+            numberList.push(input);
             input = 0;
             break;
         
         case 'times':
-            numberList.append('*');
-            numberList.append(input);
+            operandList.push('*');
+            numberList.push(input);
             input = 0;
             break;
 
         case 'divide':
-            numberList.append('/');
-            numberList.append(input);
+            operandList.push('/');
+            numberList.push(input);
             input = 0;
             break;
 
         case 'equals':
-            operate();
+            numberList.push(input);
+            input = operate();
+            answerToggle = !answerToggle;
             break;
 
         default:
@@ -152,8 +169,6 @@ function idCheck(id, value){
     }
     document.getElementById('output').value = input;
 }
-
-
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
