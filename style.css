@@ -32,6 +32,6 @@ button{
     border: 2px solid black;
 }
 
-.long-button{
+#long-button{
     grid-column: span 2;
 }

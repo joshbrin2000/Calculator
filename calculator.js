@@ -7,6 +7,6 @@ function idCheck(id){
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        idCheck(button.class);
+        idCheck(button.className);
     });
 });
