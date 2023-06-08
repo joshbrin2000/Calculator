@@ -18,7 +18,7 @@ button{
     align-items: center;
 }
 
-.output{
+#output{
     width: 336px;
     text-align: right;
     border: 2px solid black;
