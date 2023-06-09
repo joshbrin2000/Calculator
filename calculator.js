@@ -3,7 +3,6 @@ let numberList = [];
 let operandList = [];
 let pointToggle = true;
 let answerToggle = false;
-let recentEqual = false;
 
 function add(a, b){
     let sum = a + b;
@@ -88,7 +87,6 @@ function idCheck(id, value){
             if (answerToggle){
                 input = +value;
                 answerToggle = !answerToggle;
-                recentEqual = !recentEqual;
                 console.log(input);
             }
             else{
@@ -99,7 +97,7 @@ function idCheck(id, value){
             break;
             
         case 'zero':
-            if (input !== 0){
+            if (input !== 0 && !answerToggle){
                 input += value;
                 //input = Number(input); this prevents adding 0 after decimal
                 //console.log(input);
@@ -107,9 +105,8 @@ function idCheck(id, value){
             break;
 
         case 'point':
-            if (recentEqual){
+            if (answerToggle){
                 input = '0.';
-                recentEqual = !recentEqual;
                 //console.log(input);
                 answerToggle = !answerToggle;
                 pointToggle = false;
@@ -117,7 +114,6 @@ function idCheck(id, value){
             else if (pointToggle === true){
                 input += value;
                 pointToggle = false;  //need to work flag reraising
-                //answerToggle = !answerToggle;
                 //console.log(input);
             }
             else{
@@ -176,7 +172,6 @@ function idCheck(id, value){
             input = operate();
             answerToggle = true;
             pointToggle = true;
-            recentEqual = true;
             break;
 
         default:
