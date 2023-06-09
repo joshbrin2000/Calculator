@@ -2,13 +2,17 @@
 
 body{
     margin: 125px;
+    margin-top: 175px;
     padding: 125px;
     font-family: 'Roboto', sans-serif;
+    background-color: #69ce69;
 }
 
 button{
     border-radius: 0;
-    border: 1px solid black;
+    border: 2px solid black;
+    background-color: #e8a1a1;
+    font-size: 35px;
 }
 
 button:hover{
@@ -28,16 +32,19 @@ button:active{
 
 #output{
     width: 336px;
+    height: 30px;
     text-align: right;
-    border: 2px solid black;
+    border: 8px solid black;
     border-bottom: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
 }
 
 .button-container{
     display: grid;
     grid-template-columns: repeat(4, 85px);
     grid-template-rows: repeat(5, 85px);
-    border: 2px solid black;
+    border: 8px solid black;
 }
 
 #long-button{
