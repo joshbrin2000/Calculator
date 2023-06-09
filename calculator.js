@@ -1,8 +1,9 @@
 let input = 0;
 let numberList = [];
 let operandList = [];
-pointToggle = true;
+let pointToggle = true;
 let answerToggle = false;
+let recentEqual = false;
 
 function add(a, b){
     let sum = a + b;
@@ -84,16 +85,16 @@ function idCheck(id, value){
     //console.log(value);
     switch(id){
         case 'number':
-            if (input <= 0 || answerToggle){
+            if (answerToggle){
                 input = +value;
+                answerToggle = !answerToggle;
+                recentEqual = !recentEqual;
+                console.log(input);
             }
             else{
                 input += value;
                 input = Number(input);
-                //console.log(input);
-            }
-            if (answerToggle){
-                answerToggle = !answerToggle;
+                console.log(input);
             }
             break;
             
@@ -101,19 +102,26 @@ function idCheck(id, value){
             if (input !== 0){
                 input += value;
                 //input = Number(input); this prevents adding 0 after decimal
-                //console.log(input);
+                console.log(input);
             }
             break;
 
         case 'point':
-            if (pointToggle === true){
+            if (recentEqual){
+                input = '0.';
+                recentEqual = !recentEqual;
+                console.log(input);
+                answerToggle = !answerToggle;
+            }
+            else if (pointToggle === true){
                 input += value;
                 pointToggle = !pointToggle;  //need to work flag reraising
-                //console.log(input);
+                //answerToggle = !answerToggle;
+                console.log(input);
             }
             else{
                 input += "";
-                //console.log(input);
+                console.log(input);
             }
             break;
 
@@ -124,48 +132,50 @@ function idCheck(id, value){
 
         case 'AC':
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;  
 
         case 'modulo':
             operandList.push('%');
             numberList.push(input);
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;
         
         case 'plus':
             operandList.push('+');
             numberList.push(input);
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;
 
         case 'minus':
             operandList.push('-');
             numberList.push(input);
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;
         
         case 'times':
             operandList.push('*');
             numberList.push(input);
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;
 
         case 'divide':
             operandList.push('/');
             numberList.push(input);
             input = 0;
-            pointToggle = !pointToggle;
+            pointToggle = true;
             break;
 
         case 'equals':
             numberList.push(input);
             input = operate();
             answerToggle = !answerToggle;
+            pointToggle = true;
+            recentEqual = true;
             break;
 
         default:
