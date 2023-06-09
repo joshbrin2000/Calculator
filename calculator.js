@@ -102,7 +102,7 @@ function idCheck(id, value){
             if (input !== 0){
                 input += value;
                 //input = Number(input); this prevents adding 0 after decimal
-                console.log(input);
+                //console.log(input);
             }
             break;
 
@@ -110,14 +110,15 @@ function idCheck(id, value){
             if (recentEqual){
                 input = '0.';
                 recentEqual = !recentEqual;
-                console.log(input);
+                //console.log(input);
                 answerToggle = !answerToggle;
+                pointToggle = false;
             }
             else if (pointToggle === true){
                 input += value;
-                pointToggle = !pointToggle;  //need to work flag reraising
+                pointToggle = false;  //need to work flag reraising
                 //answerToggle = !answerToggle;
-                console.log(input);
+                //console.log(input);
             }
             else{
                 input += "";
@@ -173,7 +174,7 @@ function idCheck(id, value){
         case 'equals':
             numberList.push(input);
             input = operate();
-            answerToggle = !answerToggle;
+            answerToggle = true;
             pointToggle = true;
             recentEqual = true;
             break;
