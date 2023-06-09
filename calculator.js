@@ -131,30 +131,35 @@ function idCheck(id, value){
             operandList.push('%');
             numberList.push(input);
             input = 0;
+            pointToggle = !pointToggle;
             break;
         
         case 'plus':
             operandList.push('+');
             numberList.push(input);
             input = 0;
+            pointToggle = !pointToggle;
             break;
 
         case 'minus':
             operandList.push('-');
             numberList.push(input);
             input = 0;
+            pointToggle = !pointToggle;
             break;
         
         case 'times':
             operandList.push('*');
             numberList.push(input);
             input = 0;
+            pointToggle = !pointToggle;
             break;
 
         case 'divide':
             operandList.push('/');
             numberList.push(input);
             input = 0;
+            pointToggle = !pointToggle;
             break;
 
         case 'equals':
